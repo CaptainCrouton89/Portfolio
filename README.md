@@ -9,7 +9,7 @@ Star Theory*, Heart Rush, Space Admirals, Badge of Honor
 ## Programming
 To see projects with a focus on **programming**, check out the following folders (ordered in level of significance):
 
-Jupyter Notebooks, Star Theory*, TheLoLProject*, Hackathon, Badge of Honor
+Jupyter Notebooks, Star Theory*, TheLoLProject*, Hackathon*, Badge of Honor
 
 
 ### Note
