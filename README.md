@@ -13,4 +13,4 @@ Jupyter Notebooks, Star Theory*, TheLoLProject*, Hackathon, Badge of Honor
 
 
 ### Note
-\*: This project can be found in a separate repository on my github profile.
+\* This project can be found in a separate repository on my github profile.
