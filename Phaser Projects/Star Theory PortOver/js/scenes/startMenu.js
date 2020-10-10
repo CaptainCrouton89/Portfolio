@@ -13,7 +13,8 @@ class StartMenu extends MenuScene {
     
     preload () {
         super.preload();
-        //this.load.audio('key', 'file location relative to index');
+        this.load.audio('startMusic', 'assets/audio/revelatory01.mp3');
+
         this.load.image('spaceBackground', 'assets/graphics/background/Galaxy.png');
         this.load.image('cockpit', 'assets/graphics/background/cockpit.png');
 
@@ -30,6 +31,8 @@ class StartMenu extends MenuScene {
         this.startButton = new Button(this, 640, 500, 'startButton', sayHi);
 
         // this.myText = this.add.text(640, 500, "hi");
+        let startMusic = this.sound.add('startMusic');
+        startMusic.play();
     }
 
     update () {
