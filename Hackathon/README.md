@@ -1,2 +1,0 @@
-## Calender Extension 
-This was a project I worked on in 2019. It was the result of a day long hackathon. We attempted to integrate our schools web calendar with google calendar, and color code and sort events so that the college's events got more publicity towards the people who were interested. The project involved scraping our college's web calendar and creating events using Google's calendar API.
