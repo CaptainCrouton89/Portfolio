@@ -28,6 +28,8 @@ class LoadScene extends BaseScene {
         this.load.image('demo-button64', 'assets/graphics/UI/demo-button64.png');
         
         this.load.image('sun1', 'assets/graphics/spritesheets/suns/sun1.png')
+        this.load.image('planet1', 'assets/graphics/spritesheets/planets/magentaPlanet.png')
+
         this.load.audio('localMapAmbient', 'assets/audio/unobtrusive01.mp3');
 
 

@@ -18,7 +18,7 @@ class Galaxy {
         console.log("Creating galaxy...");
 
         // Create starSystem and populate it
-        this.starSystemManager.genStars(this.settings.starLayers.range.current);
+        this.starSystemManager.genStarsAndPlanets();
 
 
         // this.factionManager = new FactionManager();

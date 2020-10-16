@@ -2,8 +2,9 @@
 
 class Planet {
     
-    constructor(starSystem) {
+    constructor(starSystem, layer) {
         this.name = "defaultPlanetName"
+        this.layer = layer;
         this.sprite = null;
         this.starSystem = starSystem;
         this.shipManager = new ShipManager();
