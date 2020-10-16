@@ -6,7 +6,7 @@ class BaseScene extends Phaser.Scene {
     }
 
     init () {
-        console.log("Loading " + this.name + "...")
+        console.log("Loading " + this.name + "...");
     }
     
     preload () {

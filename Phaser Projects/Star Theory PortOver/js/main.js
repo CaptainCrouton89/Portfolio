@@ -16,7 +16,7 @@ var gameConfig = {
 var settingsConfig = {
     galaxy: {
         starLayers: {label: "Layers of stars", range: {min: 1, current: 5, max: 8}},
-        averageNumPlanets: {label: "Average number of planets per star", range: {min: 0, current: 3, max: 9}},
+        averageNumPlanets: {label: "Average number of planets per star", range: {min: 0, current: 4, max: 9}},
         averageNumMoons: {label: "Average number of moons per planet", range: {min: 0, current: .3, max: 1}},
     },
     player: {

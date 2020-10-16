@@ -4,12 +4,13 @@ class Planet {
     
     constructor(starSystem, layer) {
         this.LAYERDEPTH = 90;
-        this.name = "defaultPlanetName"
+        this.name = "defaultPlanetName";
         this.layer = layer;
         this.sprite = null;
         this.starSystem = starSystem;
         this.shipManager = new ShipManager();
         this.market = new Market();
+        this.angularSpeed = Math.random();
     }
 
     setStats(config) {
@@ -23,7 +24,7 @@ class Planet {
         let modifier = (this.layer+1)*this.LAYERDEPTH;
         vec.scale(modifier, modifier);
         // Set sprite
-        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked);
+        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked, this); // context must be set to the planet object, not the button itself
 
         // Create new container, add a sprite, then add it to the starsystem
         this.orbitContainer = scene.add.container(0, 0); // This container causes the entire planet to orbit the sun

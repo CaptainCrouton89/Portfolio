@@ -25,7 +25,7 @@ class GameManager {
     }
 
     getStory () {
-        return this.galaxy;
+        return this.story;
     }
 
     getScene () {
@@ -39,7 +39,7 @@ class GameManager {
         this.galaxy = new Galaxy(null, this.gameSettings.galaxy);
         this.player = new Player(null, this.gameSettings.player);
         this.story = new Story(null, this.gameSettings.story);
-        this.scene = new StartMenu();
+        // this.scene = new StartMenu();
 
         // Delete later
         this.player.starSystemLocation = this.galaxy.starSystemManager.starSystems[0][0];

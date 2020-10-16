@@ -5,7 +5,8 @@ class StartMenu extends MenuScene {
         super(config, lastScene);
         this.name = "StartMenu";
         this.keyboardConfig["Enter"] = startGame;
-        
+        // this.keyboardConfig["u"] = goCrazy;
+
     }
     
     init () {
@@ -22,6 +23,7 @@ class StartMenu extends MenuScene {
 
         this.background = new Background(this, 'spaceBackground');
         this.startButton = new Button(this, 640, 500, 'startButton', startGame);
+        // this.settingsButton = new Button(this, 640, 600, 'startButton', goCrazy);
 
         // this.myText = this.add.text(640, 500, "hi");
         this.music = this.sound.add('startMusic');
@@ -43,3 +45,7 @@ function startGame () {
 function sayHi () {
     console.log("HI!");
 }
+
+// function goCrazy () {
+//     console.log("I'm CRAAAAYYYYZZZZEEEEEE");
+// }
