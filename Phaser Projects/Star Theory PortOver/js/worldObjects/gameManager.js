@@ -1,13 +1,12 @@
 "use strict"
 
 class GameManager {
-    constructor(saveConfig=null, settingsConfig) {
+    constructor(saveConfig, settingsConfig) {
         this.gameSettings = settingsConfig;
 
         this.player;
         this.galaxy;
         this.story;
-        this.scene;
 
         // if an existing save configuration file exists, load the game using that, otherwise run a new game.
         if (saveConfig) {
@@ -37,10 +36,14 @@ class GameManager {
         // Creates a new game
         console.log("Creating new game...");
         // Getting error below. "settings is not defined" 
-        this.galaxy = new Galaxy(settings = this.gameSettings.galaxy);
-        this.player = new Player(settings = this.gameSettings.player);
-        this.story = new Story(settings = this.gameSettings.story);
+        this.galaxy = new Galaxy(null, this.gameSettings.galaxy);
+        this.player = new Player(null, this.gameSettings.player);
+        this.story = new Story(null, this.gameSettings.story);
         this.scene = new StartMenu();
+
+        // Delete later
+        this.player.starSystemLocation = this.galaxy.starSystemManager.starSystems[0][0];
+        console.log("Player current star system: " + this.player.starSystemLocation.name)
     }
 
     saveGame () {
@@ -48,11 +51,11 @@ class GameManager {
         console.log("Saving game...");
     }
 
-    load(loadConfig) {
+    load(saveConfig) {
         console.log("Loading game...");
-        this.galaxy = new Galaxy(config=loadConfig["galaxy"]);
-        this.player = new Player(config=loadConfig["player"]);
-        this.story = new Story(config=loadConfig["story"]);
+        this.galaxy = new Galaxy(saveConfig["galaxy"]);
+        this.player = new Player(saveConfig["player"]);
+        this.story = new Story(saveConfig["story"]);
         // this.setScene(loadConfig["scene"]);
     }
 }

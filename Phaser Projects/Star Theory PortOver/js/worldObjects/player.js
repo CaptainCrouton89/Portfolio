@@ -3,6 +3,7 @@
 class Player {
     constructor(config=null, settings=null) {
         this.settings = settings;
+        this.starSystemLocation;
         
         // Load saved player if possible, otherwise create a new ones
         if (config) {

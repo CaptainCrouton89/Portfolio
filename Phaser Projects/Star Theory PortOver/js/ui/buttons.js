@@ -53,3 +53,10 @@ class Button extends Clickable {
         this.hoverButton();
     }
 }
+
+class PlanetButton extends Button {
+
+    constructor(scene, x, y, texture, actionOnClick) {
+        super(scene, x, y, texture, actionOnClick);
+    }
+}

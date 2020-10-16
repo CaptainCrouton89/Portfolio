@@ -6,7 +6,7 @@ class BaseScene extends Phaser.Scene {
     }
 
     init () {
-        
+        console.log("Loading " + this.name + "...")
     }
     
     preload () {
@@ -14,10 +14,6 @@ class BaseScene extends Phaser.Scene {
     }
     
     create () {
-        this.cursorKeys = this.input.keyboard.createCursorKeys();
-    }
-
-    update () {
         
     }
 }
@@ -27,6 +23,9 @@ class MenuScene extends BaseScene {
     constructor(config, lastScene) {
         super(config);
         this.lastScene = lastScene;
+        this.keyboardConfig = {
+            "h": sayHi
+        }
     }
 
     init () {
@@ -44,6 +43,14 @@ class MenuScene extends BaseScene {
     }
 
     update () {
-        super.update();
+        this.input.keyboard.on('keydown', runKey, this);
+    }
+}
+
+function runKey (keyEvent) {
+    let key = keyEvent.key
+    // console.log(key);
+    if (key in this.keyboardConfig) {
+        this.keyboardConfig[keyEvent.key]();
     }
 }

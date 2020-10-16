@@ -1,7 +1,6 @@
 "use strict";
 
 // Set first menu as the startMenu scene
-let startMenu = new StartMenu("startMenu");
 
 // Automatic, permanent game configuration settings 
 var gameConfig = {
@@ -10,25 +9,35 @@ var gameConfig = {
     width: 1280,
     height: 720,
     pixelArt: true,
-    scene: [new StartMenu("startMenu"), new CockpitMenu("cockpitMenu")]
+    scene: [new BootScene("bootScene"), new LoadScene("loadScene"), new StartMenu("startMenu"), new CockpitMenu("cockpitMenu"), new LocalMapMenu("localMapMenu")]
 }
 
 // Move this to a json eventually
 var settingsConfig = {
     galaxy: {
-        totalStarSystems: {min: 1, current: 100, max: 200},
-        averageNumPlanets: {min: 0, current: 3, max: 9},
-        averageNumMoons: {min: 0, current: .3, max: 1},
+        starLayers: {label: "Layers of stars", range: {min: 1, current: 5, max: 8}},
+        averageNumPlanets: {label: "Average number of planets per star", range: {min: 0, current: 3, max: 9}},
+        averageNumMoons: {label: "Average number of moons per planet", range: {min: 0, current: .3, max: 1}},
     },
     player: {
-
+        startingCash: {label: "Starting cash", range: {min: 0, current: 1000, max: 100000}},
+        startingModules: {label: "Starting modules", list: []},
+        startingReputation: {label: "Starting reputation", range: {min: 0, current: 0, max: 1000}},
+        startingHonor: {label: "Starting honor", range: {min: 0, current: .5, max: 1}},
     },
     story: {
-
+        skipStory: {label: "Skip story", checkbox: false}
     },
     general: {
-        factionExpansionRate: {min: 0, current: .5, max: 1}
-    }
+        // factionExpansionRate: {min: 0, current: .5, max: 1}
+    },
+    controls: controlsConfig
+}
+
+var controlsConfig = {
+    "h": help,
+    "-": zoomOut,
+    "=": zoomIn
 }
 
 // Create a globally accessible phaser Game object. This will let us access the game manager, player, and galaxy
@@ -57,3 +66,17 @@ function getGame() {
 }
 
 start()
+
+function help() {
+
+}
+
+function zoomIn () {
+    var cam = StarTheory.scene.cameras.main;
+    cam.pan(500, 500, 2000, 'Power2');
+    cam.zoomTo(4, 3000);
+}
+
+function zoomOut () {
+
+}

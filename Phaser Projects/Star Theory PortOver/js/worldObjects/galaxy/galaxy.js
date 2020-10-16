@@ -4,7 +4,7 @@ class Galaxy {
     constructor(config=null, settings=null) {
         this.settings = settings;
 
-        this.starSystemManager = new StarSystemManager();
+        this.starSystemManager = new StarSystemManager(this);
 
         // Load saved galaxy if possible, otherwise create a new one
         if (config) {
@@ -18,7 +18,7 @@ class Galaxy {
         console.log("Creating galaxy...");
 
         // Create starSystem and populate it
-        this.starSystemManager.genStars(this.settings.totalStarSystems.current);
+        this.starSystemManager.genStars(this.settings.starLayers.range.current);
 
 
         // this.factionManager = new FactionManager();

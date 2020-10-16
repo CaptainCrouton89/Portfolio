@@ -1,18 +1,25 @@
 "use strict"
 
 class StarSystemManager {
-    constructor() {
-        this.starSystems = [];
+    constructor(galaxy) {
+        this.starSystems = [[]];
+        this.galaxy = galaxy;
     }
 
-    add(starSystem) {
-        this.starSystems.push(starSystem);
+    add(starSystem, l, d) {
+        this.starSystems[l][d] = starSystem;
+        // this.starSystems[l].append(starSystem);
     }
 
-    genStars (n) {
+    genStars (numberOfLayers) {
         console.log("Generating stars...");
-        for (i=0; i<n; i++) {
-            currentStar = new StarSystem();
+        this.starSystems = Array(numberOfLayers).fill().map(() => Array(8));
+        for (let l=0; l<numberOfLayers; l++) {
+            for (let d=0; d<8; d++) {
+                let currentStarSystem = new StarSystem(this.galaxy, l, d);
+                this.add(currentStarSystem, l, d);
+            }
         }
+        // console.table(this.starSystems);
     }
 }
