@@ -10,9 +10,12 @@ class PlanetManager {
         this.planetSystem[l] = planet;
     }
 
-    genPlanets () {
-        console.log("Generating planets for starsystem...");
+    getPlanets () {
+        // console.table(this.planetSystem);
+        return this.planetSystem;
+    }
 
+    genPlanets () {
         let numberOfLayers = this.starSystem.galaxy.settings.averageNumPlanets.range.current;
         this.planetSystem = Array(numberOfLayers);
         for (let l=0; l<numberOfLayers; l++) {

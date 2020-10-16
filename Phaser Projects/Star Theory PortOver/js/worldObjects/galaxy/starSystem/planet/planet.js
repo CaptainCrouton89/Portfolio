@@ -3,6 +3,7 @@
 class Planet {
     
     constructor(starSystem, layer) {
+        this.LAYERDEPTH = 90;
         this.name = "defaultPlanetName"
         this.layer = layer;
         this.sprite = null;
@@ -16,17 +17,18 @@ class Planet {
         this.resources = config.resources;
     }
 
-    render(scene, img) {
+    render (scene) {
         // Randomly determines the location of the sprite in its orbit
-        let vec = new Vector2(helper.getRandomFloat(-1, 1), helper.getRandomFloat(-1, 1)).normalize();
-        vec.scale(this.orbitalRadius, this.orbitalRadius);
+        let vec = new Phaser.Math.Vector2(getRandomFloat(-1, 1), getRandomFloat(-1, 1)).normalize();
+        let modifier = (this.layer+1)*this.LAYERDEPTH;
+        vec.scale(modifier, modifier);
         // Set sprite
-        this.sprite = new PlanetButton(scene, 0, 0, img, this.clicked);
+        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked);
 
         // Create new container, add a sprite, then add it to the starsystem
         this.orbitContainer = scene.add.container(0, 0); // This container causes the entire planet to orbit the sun
         this.spinContainer = scene.add.container(vec.x, vec.y) // This is where the ships and moons get placed, to orbit the planet
-        this.spinContainer.add(this.sprite); // Adding the sprite to the spinning of the planet. 
+        this.spinContainer.add(this.sprite); // Adding the sprite to the spinning container. 
         this.starSystem.getContainer().add(this.orbitContainer); // Adding the orbitContainer to the starsystem
         this.orbitContainer.add(this.spinContainer); // Adding the spinContainer to the rotation around the star
     }
@@ -37,4 +39,8 @@ class Planet {
         // Scene.LocalMapScene.showPlanetInfo(this);
     }
 
+}
+
+function getRandomFloat(min, max) {
+    return Math.random() * (max - min) + min;
 }

@@ -17,7 +17,7 @@ class StarSystem {
     }
 
     getContainer () {
-        return this.container;
+        return this.spinContainer;
     }
 
     // Called when entering the local view
@@ -25,10 +25,12 @@ class StarSystem {
         this.sprite = new PlanetButton(scene, 0, 0, 'sun1', this.clicked);
 
         // adds a container in the middle of the scene
-        this.container = scene.add.container(gameConfig.width/2, gameConfig.height/2);
-        this.container.add(this.sprite);
-
+        this.spinContainer = scene.add.container(gameConfig.width/2, gameConfig.height/2);
+        this.spinContainer.add(this.sprite);
+        console.table("My table:", this.planetManager.getPlanets())
+        this.planetManager.getPlanets().forEach(planet => planet.render(scene))   
         
+
     }
 
     clicked () {
