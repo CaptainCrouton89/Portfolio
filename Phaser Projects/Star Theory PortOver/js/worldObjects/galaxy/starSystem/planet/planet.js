@@ -3,14 +3,47 @@
 class Planet {
     
     constructor(starSystem, layer) {
-        this.LAYERDEPTH = 90;
         this.name = "defaultPlanetName";
+        this.description = "defaultPlanetDescription";
         this.layer = layer;
-        this.sprite = null;
+
         this.starSystem = starSystem;
+        this.faction;
+
+        // Orbiting ships
         this.shipManager = new ShipManager();
-        this.market = new Market();
-        this.angularSpeed = Math.random();
+
+        // Planet inventories
+        this.cargoMarket = new CargoMarket(this);
+        this.upgradesMarket = new UpgradesMarket(this);
+        this.modulesMarket = new ModulesMarket(this);
+        this.crewMarket = new CrewMarket(this);
+        this.questPool = new QuestPool(this);
+        
+        // Sprite Info
+        this.LAYER_DEPTH = 90; // Pixel distance apart each planet is from the next
+        this.sprite = null;
+        // Used to update position in localMapMenu
+        this.orbitalSpeed = (1/(this.layer + 1)) * 7; 
+        this.angularSpeed = (Math.random() * 2 - 1) * 30 - this.orbitalSpeed;
+
+        // Unimplemented
+        
+        // These stats never change
+        this.staticStats = {
+            temperatureLevel: 1/(this.layer + 1),
+            resources: {},
+            resourceScore: 0,
+            population: 0,
+            traffic: 0,
+            wealth: 0,
+            skill: 0,
+            orbitalStation: false,
+            settlementType: null,
+        }
+
+        
+
     }
 
     setStats(config) {
@@ -21,10 +54,10 @@ class Planet {
     render (scene) {
         // Randomly determines the location of the sprite in its orbit
         let vec = new Phaser.Math.Vector2(getRandomFloat(-1, 1), getRandomFloat(-1, 1)).normalize();
-        let modifier = (this.layer+1)*this.LAYERDEPTH;
+        let modifier = (this.layer+1)*this.LAYER_DEPTH;
         vec.scale(modifier, modifier);
         // Set sprite
-        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked, this); // context must be set to the planet object, not the button itself
+        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked, this);
 
         // Create new container, add a sprite, then add it to the starsystem
         this.orbitContainer = scene.add.container(0, 0); // This container causes the entire planet to orbit the sun

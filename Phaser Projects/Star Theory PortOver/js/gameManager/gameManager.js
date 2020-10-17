@@ -16,6 +16,20 @@ class GameManager {
         }
     }
 
+    switchScenes (currentSceneString, nextSceneString) {
+        // this.removeTweens(currentSceneString);
+        StarTheory.scene.stop(currentSceneString);
+
+        // want to set new scene.last scene equal to last scene
+        
+        StarTheory.scene.start(nextSceneString);
+    }
+
+    removeTweens (currentSceneString) {
+        console.log(StarTheory.scene.getScene(currentSceneString));
+        StarTheory.scene.getScene(currentSceneString).tweens.destroy();
+    }
+
     getPlayer () {
         return this.player;
     }

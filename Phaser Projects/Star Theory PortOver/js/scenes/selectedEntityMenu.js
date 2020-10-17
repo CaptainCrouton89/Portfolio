@@ -1,10 +1,10 @@
 "use strict"
 
-class TemplateScene extends MenuScene {
+class SelectedEntityMenu extends MenuScene {
 
     constructor(config, lastScene) {
         super(config, lastScene);
-        this.name = "sceneName";
+        this.name = "";
         this.keyboardConfig["char"] = foo;
     }
 
@@ -23,8 +23,4 @@ class TemplateScene extends MenuScene {
     update () {
         super.update();
     }
-}
-
-function foo () {
-    
 }

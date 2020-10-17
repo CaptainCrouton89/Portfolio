@@ -14,6 +14,82 @@ class LoadScene extends BaseScene {
 
     preload () {
         super.preload();
+
+        let width = gameConfig.width
+        let height = gameConfig.height
+
+        var progressBar = this.add.graphics();
+        var progressBox = this.add.graphics();
+
+        let BAR_WIDTH = gameConfig.width / 2; // width = 640
+        let BAR_HEIGHT = gameConfig.height / 15; // height = 72
+        let PADDING = 5;
+
+
+        progressBox.fillStyle(0x222222, 0.8);
+        progressBox.fillRect(
+            (width/2)-(BAR_WIDTH/2), 
+            (height/2)-(BAR_HEIGHT/2), 
+            BAR_WIDTH, 
+            BAR_HEIGHT);
+        
+        
+        var loadingText = this.make.text({
+            x: width / 2,
+            y: height / 2 - 50,
+            text: 'Loading...',
+            style: {
+                font: '20px monospace',
+                fill: '#ffffff'
+            }
+        });
+        loadingText.setOrigin(0.5, 0.5);
+        
+        var percentText = this.make.text({
+            x: width / 2,
+            y: height / 2 - 5,
+            text: '0%',
+            style: {
+                font: '18px monospace',
+                fill: '#ffffff'
+            }
+        });
+        percentText.setOrigin(0.5, 0.5);
+        
+        var assetText = this.make.text({
+            x: width / 2,
+            y: height / 2 + 50,
+            text: '',
+            style: {
+                font: '18px monospace',
+                fill: '#ffffff'
+            }
+        });
+
+        assetText.setOrigin(0.5, 0.5);
+        
+        this.load.on('progress', function (value) {
+            percentText.setText(parseInt(value * 100) + '%');
+            progressBar.clear();
+            progressBar.fillStyle(0xffffff, 1);
+            progressBar.fillRect(
+                (width/2)-(BAR_WIDTH/2)+PADDING, 
+                (height/2)-(BAR_HEIGHT/2)+PADDING, 
+                (BAR_WIDTH - 2 * PADDING) * value, 
+                (BAR_HEIGHT - 2 * PADDING)
+                );
+        });
+        
+        this.load.on('fileprogress', function (file) {
+            assetText.setText('Loading asset: ' + file.key);
+        });
+
+        // this.load.image('logo', 'zenvalogo.png');
+        //     for (var i = 0; i < 5000; i++) {
+        //         this.load.image('logo'+i, 'zenvalogo.png');
+        //     }
+ 
+
         // Load all images for game
         this.load.image('startButton', 'assets/graphics/UI/startButton.png');
         this.load.audio('startMusic', 'assets/audio/revelatory01.mp3');
@@ -41,5 +117,14 @@ class LoadScene extends BaseScene {
         StarTheory.scene.stop("loadScene");
         StarTheory.scene.start("startMenu");
 
+    }
+
+    update () {
+    this.load.on('progress', function (value) {
+        console.log(value);
+        progressBar.clear();
+        progressBar.fillStyle(0xffffff, 1);
+        progressBar.fillRect(250, 280, 300 * value, 30);
+    });
     }
 }

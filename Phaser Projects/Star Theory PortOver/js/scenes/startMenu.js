@@ -4,7 +4,7 @@ class StartMenu extends MenuScene {
     constructor(config, lastScene) {
         super(config, lastScene);
         this.name = "StartMenu";
-        this.keyboardConfig["Enter"] = startGame;
+        this.keyboardConfig["Enter"] = [startGame];
         // this.keyboardConfig["u"] = goCrazy;
 
     }
@@ -37,14 +37,12 @@ class StartMenu extends MenuScene {
 
 function startGame () {
     // StarTheory.scene.music.stop();
-    StarTheory.scene.stop('startMenu')
-    StarTheory.scene.start('cockpitMenu');
+
+    StarTheory.gameManager.switchScenes("startMenu", "cockpitMenu");
+    // StarTheory.scene.stop('startMenu')
+    // StarTheory.scene.start('cockpitMenu');
 }
 
-
-function sayHi () {
-    console.log("HI!");
-}
 
 // function goCrazy () {
 //     console.log("I'm CRAAAAYYYYZZZZEEEEEE");

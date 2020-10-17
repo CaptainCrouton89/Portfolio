@@ -1,30 +1,12 @@
 "use strict"
 
-class BaseScene extends Phaser.Scene {
-    constructor(config) {
-        super(config);
-    }
-
-    init () {
-        console.log("Loading " + this.name + "...");
-    }
-    
-    preload () {
-
-    }
-    
-    create () {
-        
-    }
-}
-
-
 class MenuScene extends BaseScene {
     constructor(config, lastScene) {
         super(config);
         this.lastScene = lastScene;
         this.keyboardConfig = {
-            "h": sayHi
+            "h": [sayHi, "buddy"],
+            "b": [back]
         }
     }
 
@@ -48,9 +30,22 @@ class MenuScene extends BaseScene {
 }
 
 function runKey (keyEvent) {
+    /**
+     * Nifty function for running commands in the format 
+     * char: [function, param1, param2, param3...]
+     */
     let key = keyEvent.key
     // console.log(key);
     if (key in this.keyboardConfig) {
-        this.keyboardConfig[keyEvent.key]();
+        let command = this.keyboardConfig[keyEvent.key];
+        command[0](...command.slice(1));
     }
+}
+
+function back () {
+    StarTheory.gameManager.switchScenes(this.name, this.lastScene);
+}
+
+function sayHi (otherwords) {
+    console.log("hi", otherwords);
 }

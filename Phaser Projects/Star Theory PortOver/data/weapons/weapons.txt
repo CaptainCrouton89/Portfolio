@@ -1,0 +1,20 @@
+weapons.txt
+
+range adn damage tradeoff
+
+broadside does more damage, must be sideways, deals variable damage to random sample of modules.
+Or...
+Can only have p to 3 
+
+Turret does less damage, but can target specific modules in enemy ship. Deals non-exact amount of damage. 50% variance.
+
+Energy: Blocked by hull armor, deals very little damage to them, poorly blocked by energy shields
+Explosive: Blocked by energy shields, does very little damage to them, poorly blocked by hull armor
+Kinetic: Moderate damage to both, moderately blocked by both
+
+Energy: High damage per building, but low overall damage: (1000)
+Explosive: Low damage per building, but increased overall damage: (500, 500, 500, 500)
+Kinetic: Middle ground: (750, 750)
+
+
+Strategies: 

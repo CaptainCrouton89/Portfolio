@@ -3,13 +3,15 @@
 class StarSystem {
     
     constructor(galaxy, layer, degree) {
-        this.planetManager = new PlanetManager(this);
+        
         this.name = "defaultStarSystemName";
         this.galaxy = galaxy;
         this.adjacentStars = [];
         this.layer = layer;
         this.degree = degree;
         this.sprite;
+        this.planetManager = new PlanetManager(this);
+        this.planetManager.init();
     }
 
     getAdjacentStars() {
@@ -32,7 +34,7 @@ class StarSystem {
     }
 
     clicked () {
-        console.log("Clicked this star!");
+        console.log(this.name);
     }
 
     genPlanets () {
