@@ -84,10 +84,10 @@ class LoadScene extends BaseScene {
             assetText.setText('Loading asset: ' + file.key);
         });
 
-        // this.load.image('logo', 'zenvalogo.png');
-        //     for (var i = 0; i < 5000; i++) {
-        //         this.load.image('logo'+i, 'zenvalogo.png');
-        //     }
+        this.load.image('logo', 'zenvalogo.png');
+            for (var i = 0; i < 1000; i++) {
+                this.load.image('exampleLoadingFile'+i, 'zenvalogo.png');
+            }
  
 
         // Load all images for game

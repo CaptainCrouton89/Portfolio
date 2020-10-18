@@ -16,6 +16,16 @@ class StartMenu extends MenuScene {
     
     preload () {
         super.preload();
+        var titleText = this.make.text({
+            x: gameConfig.width / 2,
+            y: gameConfig.height / 2 - 50,
+            text: 'STAR THEORY',
+            style: {
+                font: '20px monospace',
+                fill: '#ffffff'
+            }
+        });
+        titleText.setOrigin(0.5, 0.5);
     }
     
     create () {
