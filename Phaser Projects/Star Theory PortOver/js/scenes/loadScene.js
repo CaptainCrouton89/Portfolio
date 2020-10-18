@@ -91,22 +91,27 @@ class LoadScene extends BaseScene {
  
 
         // Load all images for game
-        this.load.image('startButton', 'assets/graphics/UI/startButton.png');
-        this.load.audio('startMusic', 'assets/audio/revelatory01.mp3');
 
+        // AUDIO
+        this.load.audio('startMusic', 'assets/audio/revelatory01.mp3');
+        this.load.audio('localMapAmbient', 'assets/audio/unobtrusive01.mp3');
+
+        // UI
+        this.load.image('startButton', 'assets/graphics/UI/startButton.png');
+        this.load.image('selectionIndicator', 'assets/graphics/UI/selectionIndicator.png');
+
+        // BACKGROUNDS
         this.load.image('spaceBackground', 'assets/graphics/background/Galaxy.png');
         this.load.image('starrySky2', 'assets/graphics/background/starrySkies.png');
         this.load.image('cockpit', 'assets/graphics/background/cockpit.png');
         this.load.image('localSpaceBackground', 'assets/graphics/background/spaceBackground3.png');
-
-        this.load.image('demo-button32', 'assets/graphics/UI/demo-button32.png');
-        this.load.image('demo-button32x2', 'assets/graphics/UI/demo-button32x2.png');
-        this.load.image('demo-button64', 'assets/graphics/UI/demo-button64.png');
         
+        // GAME OBJECTS
         this.load.image('sun1', 'assets/graphics/spritesheets/suns/sun1.png')
         this.load.image('planet1', 'assets/graphics/spritesheets/planets/magentaPlanet.png')
 
-        this.load.audio('localMapAmbient', 'assets/audio/unobtrusive01.mp3');
+        
+        
 
 
         
@@ -116,6 +121,7 @@ class LoadScene extends BaseScene {
         super.create();
         StarTheory.scene.stop("loadScene");
         StarTheory.scene.start("startMenu");
+        
 
     }
 

@@ -12,6 +12,7 @@ class MenuScene extends BaseScene {
 
     init () {
         super.init();
+        this.input.keyboard.on('keydown', runKey, this);
     }
 
     preload () {
@@ -25,7 +26,7 @@ class MenuScene extends BaseScene {
     }
 
     update () {
-        this.input.keyboard.on('keydown', runKey, this);
+        super.update();
     }
 }
 
@@ -33,6 +34,8 @@ function runKey (keyEvent) {
     /**
      * Nifty function for running commands in the format 
      * char: [function, param1, param2, param3...]
+     * 
+     * Issue: Repeatedly calls function over and over
      */
     let key = keyEvent.key
     // console.log(key);

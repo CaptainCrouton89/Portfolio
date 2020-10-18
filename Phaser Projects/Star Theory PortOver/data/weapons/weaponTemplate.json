@@ -1,5 +1,6 @@
 {
     "name": "defaultName",
+    "description": "description",
     "mounting": "broadside turret",
     "damageType": "energy kinetic explosive",
     "damage": 500,

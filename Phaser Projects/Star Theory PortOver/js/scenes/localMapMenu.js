@@ -1,6 +1,7 @@
 "use strict"
 
 class LocalMapMenu extends MenuScene {
+
     constructor(config, lastScene) {
         super(config, lastScene);
         this.name = "LocalMapMenuScene";
@@ -9,7 +10,7 @@ class LocalMapMenu extends MenuScene {
         this.planetSelectionIndex = 0;
         this.shipSelectionIndex = 0;
 
-        this.keyboardConfig["p"] = [this.nextPlanet ];
+        this.keyboardConfig["p"] = [this.nextPlanet, this];
         this.keyboardConfig["s"] = [this.nextShip ];
         this.keyboardConfig["w"] = [this.wormhole ];
         this.keyboardConfig["Enter"] = [this.enterSelected, this.selected];
@@ -33,10 +34,14 @@ class LocalMapMenu extends MenuScene {
         this.startMusic.play();
 
         // Sets background
-        this.background = new Background(this, 'localSpaceBackground');
+        //this.background = new Background(this, 'localSpaceBackground');
         
         // Renders solar system
         this.starSystem.render(this);
+
+        this.selectionIndicator = new PixelSprite(this, 0, 0, 'selectionIndicator');
+        this.selectionIndicator.depth = 2;
+        this.selectionIndicator.visible = false;
     }
 
     update (time, delta) {
@@ -47,19 +52,31 @@ class LocalMapMenu extends MenuScene {
             planet.orbitContainer.angle += delta/1000 * planet.orbitalSpeed;
             planet.spinContainer.angle += delta/1000 * planet.angularSpeed;
         });
-    }
 
-    nextPlanet () {
-
-        // Running into errors because context is not the class.
-        console.log(this.planets);
-        this.selected = this.planets[this.planetSelectionIndex];
-        console.log("selecting planet:", this.planets[this.planetSelectionIndex].name, "with index:", this.planetSelectionIndex);
-        this.planetSelectionIndex+=1;
-        if (this.planetSelectionIndex >= this.planets.length) {
-            this.planetSelectionIndex = 0;
+        if (this.selected) {
+            this.selected.spinContainer.add(this.selectionIndicator)
         }
     }
+
+    nextPlanet (context) {
+        context.selectionIndicator.visible = true;
+        // Running into errors because context is not the class.
+        context.selected = context.planets[context.planetSelectionIndex];
+        console.log("selecting planet:", context.planets[context.planetSelectionIndex].name, "with index:", context.planetSelectionIndex);
+        context.planetSelectionIndex+=1;
+        if (context.planetSelectionIndex >= context.planets.length) {
+            context.planetSelectionIndex = 0;
+        }
+    }
+
+    nextShip (context) {
+    }
+
+    enterPlanet (context) {
+        
+    }
+
+    
 }
 
 
