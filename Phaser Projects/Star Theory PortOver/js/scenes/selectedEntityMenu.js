@@ -19,10 +19,12 @@ class SelectedEntityMenu extends MenuScene {
 
     setEntity (entity) {
         // delete keybinds for old entity
-        for (const [key, value] of Object.entries(this.entity.getSelectionOptions())) {
-            delete this.keyboardConfig[key]
+        if (this.entity) {
+            for (const [key, value] of Object.entries(this.entity.getSelectionOptions())) {
+                delete this.keyboardConfig[key]
+            }
         }
-
+        
         // updates entity to new entity and changes infobox information
         this.entity = entity;
         this.infoBox.update(this.entity);

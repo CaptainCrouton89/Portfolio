@@ -61,36 +61,43 @@ class LocalMapMenu extends MenuScene {
             planet.sprite.angle += delta/1000 * planet.angularSpeed;
         });
 
+    }
 
-        // if anything is selected, and selection menu is not open, open it.
-        if (this.selected && !this.selectedEntityInfoMenu) {
-                this.selectedEntityInfoMenu = true
-                StarTheory.scene.start("selectedEntityMenu");
+    initializeSelector () {
+        // Creates the selectedEntityMenu and displays it
+        if (!this.selectedEntityInfoMenu) {
+            this.selectedEntityInfoMenu = true
+            StarTheory.scene.start("selectedEntityMenu");
         }
 
+        // Makes the selector visible
+        this.selectionIndicator.visible = true;
     }
 
     nextPlanet (context) {
-        
-        context.selectionIndicator.visible = true;
-        context.selected = context.planets[context.planetSelectionIndex];
-        //context.selected.getSpinContainer().add(this.selectionIndicator);
+        context.initializeSelector();
 
+        // sets localMapMenu's selector to the next planet in the list
+        context.selected = context.planets[context.planetSelectionIndex];
+        context.selected.spinContainer.add(context.selectionIndicator);
         console.log("selecting planet:", context.planets[context.planetSelectionIndex].name, "with index:", context.planetSelectionIndex);
+        
+        // Updates the information being shown in the selectedEntityMenu
+        StarTheory.scene.getScene("selectedEntityMenu").setEntity(context.selected);
+        
+        // updates index so that the next function call will select the next planet. Automatically resets
         context.planetSelectionIndex+=1;
         if (context.planetSelectionIndex >= context.planets.length) {
             context.planetSelectionIndex = 0;
         }
-
-        StarTheory.scene.getScene("selectedEntityMenu").setEntity(context.selected);
-        context.selected.spinContainer.add(context.selectionIndicator); // Concerned the spin container is getting added multiple times—do they stack?
-
     }
 
     nextShip (context) {
+        context.initializeSelector();
     }
 
     enterPlanet (context) {
+        context.initializeSelector();
         
     }
 
