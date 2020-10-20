@@ -9,7 +9,7 @@ var gameConfig = {
     width: 1280,
     height: 720,
     pixelArt: true,
-    scene: [new BootScene("bootScene"), new LoadScene("loadScene"), new StartMenu("startMenu"), new CockpitMenu("cockpitMenu"), new LocalMapMenu("localMapMenu")]
+    scene: [new BootScene("bootScene"), new LoadScene("loadScene"), new StartMenu("startMenu"), new CockpitMenu("cockpitMenu"), new LocalMapMenu("localMapMenu"), new SelectedEntityMenu("selectedEntityMenu"), new CurrentEntityMenu("currentEntityMenu")]
 }
 
 // Move this to a json eventually

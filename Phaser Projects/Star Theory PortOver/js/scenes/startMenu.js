@@ -16,16 +16,6 @@ class StartMenu extends MenuScene {
     
     preload () {
         super.preload();
-        var titleText = this.make.text({
-            x: gameConfig.width / 2,
-            y: gameConfig.height / 2 - 50,
-            text: 'STAR THEORY',
-            style: {
-                font: '20px monospace',
-                fill: '#ffffff'
-            }
-        });
-        titleText.setOrigin(0.5, 0.5);
     }
     
     create () {
@@ -33,6 +23,7 @@ class StartMenu extends MenuScene {
 
         this.background = new Background(this, 'spaceBackground');
         this.startButton = new Button(this, 640, 500, 'startButton', startGame);
+        this.titleText = new PixelSprite(this, gameConfig.width / 2, gameConfig.height / 2 - 150, 'titleText');
         // this.settingsButton = new Button(this, 640, 600, 'startButton', goCrazy);
 
         // this.myText = this.add.text(640, 500, "hi");
@@ -46,6 +37,7 @@ class StartMenu extends MenuScene {
 }
 
 function startGame () {
+    // StarTheory.scene.add('cockpitMenu', new CockpitMenu('cockpitMenu'));
     // StarTheory.scene.music.stop();
 
     StarTheory.gameManager.switchScenes("startMenu", "cockpitMenu");

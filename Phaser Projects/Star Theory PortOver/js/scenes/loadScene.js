@@ -20,11 +20,13 @@ class LoadScene extends BaseScene {
 
         var progressBar = this.add.graphics();
         var progressBox = this.add.graphics();
+        var background = this.add.graphics();
 
         let BAR_WIDTH = gameConfig.width / 2; // width = 640
         let BAR_HEIGHT = gameConfig.height / 15; // height = 72
         let PADDING = 5;
 
+        background.fillRect(0, 0, width, height);
 
         progressBox.fillStyle(0x222222, 0.8);
         progressBox.fillRect(
@@ -69,6 +71,10 @@ class LoadScene extends BaseScene {
         assetText.setOrigin(0.5, 0.5);
         
         this.load.on('progress', function (value) {
+            background.clear();
+            background.fillStyle(0x000000, 1 - value);
+            background.fillRect(0, 0, width, height);
+
             percentText.setText(parseInt(value * 100) + '%');
             progressBar.clear();
             progressBar.fillStyle(0xffffff, 1);
@@ -84,10 +90,9 @@ class LoadScene extends BaseScene {
             assetText.setText('Loading asset: ' + file.key);
         });
 
-        this.load.image('logo', 'zenvalogo.png');
-            for (var i = 0; i < 1000; i++) {
-                this.load.image('exampleLoadingFile'+i, 'zenvalogo.png');
-            }
+        for (var i = 0; i < 2000; i++) {
+            this.load.image('sun1'+i, 'assets/graphics/spritesheets/suns/sun1.png');
+        }
  
 
         // Load all images for game
@@ -99,6 +104,9 @@ class LoadScene extends BaseScene {
         // UI
         this.load.image('startButton', 'assets/graphics/UI/startButton.png');
         this.load.image('selectionIndicator', 'assets/graphics/UI/selectionIndicator.png');
+        
+        // LOGO
+        this.load.image('titleText', 'assets/graphics/logo/titleText.png');
 
         // BACKGROUNDS
         this.load.image('spaceBackground', 'assets/graphics/background/Galaxy.png');
@@ -109,6 +117,7 @@ class LoadScene extends BaseScene {
         // GAME OBJECTS
         this.load.image('sun1', 'assets/graphics/spritesheets/suns/sun1.png')
         this.load.image('planet1', 'assets/graphics/spritesheets/planets/magentaPlanet.png')
+        this.load.image('starGate1', 'assets/graphics/spritesheets/starGates/starGate01.png')
 
         
         

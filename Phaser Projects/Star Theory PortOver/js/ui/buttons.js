@@ -14,10 +14,10 @@ class Button extends Clickable {
 
     constructor(scene, x, y, texture, actionOnClick, context) {
         super(scene, x, y, texture, actionOnClick);
+        this.on('pointerdown', this.pointerDown, this);
         this.on('pointerdown', actionOnClick, context);
         this.on('pointerout', this.hoverOff, this);
         this.on('pointerover', this.hoverButton, this);
-        this.on('pointerdown', this.pointerDown, this);
         this.on('pointerup', this.pointerUp, this);
         this.scene = scene;
     }

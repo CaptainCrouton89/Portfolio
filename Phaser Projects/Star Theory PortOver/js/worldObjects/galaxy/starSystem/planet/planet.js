@@ -3,7 +3,7 @@
 class Planet {
     
     constructor(starSystem, layer) {
-        this.name = "defaultPlanetName";
+        this.name = "defaultPlanetName" + layer;
         this.description = "defaultPlanetDescription";
         this.layer = layer;
 

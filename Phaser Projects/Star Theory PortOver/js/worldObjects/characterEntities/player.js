@@ -5,6 +5,11 @@ class Player extends Pilot {
         super();
         this.settings = settings;
         this.starSystemLocation;
+        this.planetaryLocation;
+        this.location = {
+            "star": this.starSystemLocation,
+            "planet": this.planetaryLocation
+        }
 
         
 
@@ -17,6 +22,10 @@ class Player extends Pilot {
         } else {
             this.newPlayer();
         }
+    }
+
+    getLocation() {
+        return this.location;
     }
 
     newPlayer () {

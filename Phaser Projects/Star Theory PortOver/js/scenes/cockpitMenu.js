@@ -4,6 +4,7 @@ class CockpitMenu extends MenuScene {
 
     constructor(config, lastScene) {
         super(config, lastScene);
+        this.keyboardConfig["Enter"] = [openLocalMap];
         this.name = "CockpitMenuScene";
     }
 

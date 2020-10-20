@@ -18,6 +18,10 @@ class StarSystem {
         return this.adjacentStars;
     }
 
+    getPlanets() {
+        return this.planetManager.getPlanets();
+    }
+
     getContainer () {
         return this.spinContainer;
     }

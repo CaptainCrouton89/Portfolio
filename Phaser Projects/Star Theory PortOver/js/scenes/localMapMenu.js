@@ -7,6 +7,8 @@ class LocalMapMenu extends MenuScene {
         this.name = "LocalMapMenuScene";
 
         this.selected;
+        this.selectedEntityInfoMenu = false;
+        this.currentEntityInfoMenu = false;
         this.planetSelectionIndex = 0;
         this.shipSelectionIndex = 0;
 
@@ -25,6 +27,8 @@ class LocalMapMenu extends MenuScene {
     
     preload () {
         super.preload();
+        StarTheory.scene.start("currentEntityMenu");
+        // StarTheory.scene.getScene("currentEntityMenu").setEntity(this.selected); Maybe load this in create function of current entity menu?
     }
     
     create () {
@@ -34,7 +38,7 @@ class LocalMapMenu extends MenuScene {
         this.startMusic.play();
 
         // Sets background
-        //this.background = new Background(this, 'localSpaceBackground');
+        this.background = new Background(this, 'localSpaceBackground');
         
         // Renders solar system
         this.starSystem.render(this);
@@ -50,18 +54,29 @@ class LocalMapMenu extends MenuScene {
         // Loop through planets in star system and cause them to spin and orbit
         this.starSystem.planetManager.getPlanets().forEach(planet => {
             planet.orbitContainer.angle += delta/1000 * planet.orbitalSpeed;
-            planet.spinContainer.angle += delta/1000 * planet.angularSpeed;
+            planet.spinContainer.angle -= delta/1000 * planet.orbitalSpeed;
+            planet.sprite.angle += delta/1000 * planet.angularSpeed;
         });
 
+
+
         if (this.selected) {
-            this.selected.spinContainer.add(this.selectionIndicator)
+            if (!this.selectedEntityInfoMenu) {
+                this.selectedEntityInfoMenu = true
+                StarTheory.scene.start("selectedEntityMenu");
+            }
+            StarTheory.scene.getScene("selectedEntityMenu").setEntity(this.selected);
+            this.selected.spinContainer.add(this.selectionIndicator); // COncerned the spin container is getting added multiple times—do they stack?
         }
+
+
     }
 
     nextPlanet (context) {
+        
         context.selectionIndicator.visible = true;
-        // Running into errors because context is not the class.
         context.selected = context.planets[context.planetSelectionIndex];
+
         console.log("selecting planet:", context.planets[context.planetSelectionIndex].name, "with index:", context.planetSelectionIndex);
         context.planetSelectionIndex+=1;
         if (context.planetSelectionIndex >= context.planets.length) {

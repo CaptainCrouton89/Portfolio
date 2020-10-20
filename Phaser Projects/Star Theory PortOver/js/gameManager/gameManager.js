@@ -25,6 +25,12 @@ class GameManager {
         StarTheory.scene.start(nextSceneString);
     }
 
+    // startScene (scene, pauseCurrent=false, ) {
+    //     StarTheory.scene.add('cockpitMenu', new CockpitMenu('cockpitMenu'));
+    //     if (StarTheory.scene.getScene(scene.name))
+    //     StarTheory.scene.start(nextSceneString);
+    // }
+
     removeTweens (currentSceneString) {
         console.log(StarTheory.scene.getScene(currentSceneString));
         StarTheory.scene.getScene(currentSceneString).tweens.destroy();
@@ -57,7 +63,10 @@ class GameManager {
 
         // Delete later
         this.player.starSystemLocation = this.galaxy.starSystemManager.starSystems[0][0];
-        console.log("Player current star system: " + this.player.starSystemLocation.name)
+        console.log("Player current star system: " + this.player.starSystemLocation.name);
+
+        this.player.planetaryLocation = this.player.starSystemLocation.getPlanets()[0];
+        console.log("Player current planetary system: " + this.player.planetaryLocation.name)
     }
 
     saveGame () {
