@@ -5,24 +5,26 @@ class CurrentEntityMenu extends MenuScene {
     constructor (config) {
         super(config);
         this.entity;
-        // this.name = this.entity.name + " Info";
+        this.name = "currentEntityMenu";
         this.keyboardConfig["t"] = [this.trade, this.entity];
     }
 
     init () {
         super.init();
-        this.entity = StarTheory.gameManager.player.getLocation()["planet"];
+        this.entity = StarTheory.gameManager.player.getLocation();
+        this.infoBox = new CurrentEntityInfoBox(this, this.entity);
+        this.setEntity();
+        console.log("current entity name:", this.entity.name);
     }
 
-    setEntity (entity) {
-        this.entity = entity;
+    setEntity () {
+        this.entity = StarTheory.gameManager.player.getLocation();
         this.infoBox.update(this.entity);
     }
 
     preload () {
         super.preload();
-
-        this.infoBox = new InfoBox(this, this.entity, true, "right"); // 
+        // this.infoBox.update(this.entity);
         // this.infoBox.render();
 
     }

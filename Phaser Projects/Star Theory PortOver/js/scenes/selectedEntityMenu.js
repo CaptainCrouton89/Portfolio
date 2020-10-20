@@ -6,42 +6,50 @@ class SelectedEntityMenu extends MenuScene {
         super(config);
         this.entity;
         this.name = "selectedEntityMenu";
-        this.keyboardConfig["s"] = [this.sailTo, this.entity];
+
+        // Implement both buttons, and keybinds, separately
     }
 
     init () {
         super.init();
+        this.entity = StarTheory.gameManager.player.getLocation();
+        this.infoBox = new SelectedEntityInfoBox(this, this.entity); // move this into constructor if I can have gameConfig.width defined before hand. 
+        // Perhaps sequentially add scenes after inputing the config so that scenes can use the config in their constructors.
     }
 
     setEntity (entity) {
+        // delete keybinds for old entity
+        for (const [key, value] of Object.entries(this.entity.getSelectionOptions())) {
+            delete this.keyboardConfig[key]
+        }
+
+        // updates entity to new entity and changes infobox information
         this.entity = entity;
         this.infoBox.update(this.entity);
+
+        // adds new keybinds to the keyboardConfig
+        for (const [key, value] of Object.entries(this.entity.getSelectionOptions())) {
+            this.keyboardConfig[key] = value;
+        }
     }
 
     preload () {
         super.preload();
-
-        this.infoBox = new InfoBox(this, this.entity, false, "left"); // move this into constructor if I can have gameConfig.width defined before hand. 
-        // Perhaps sequentially add scenes after inputing the config so that scenes can use the config in their constructors.
+        this.selected = StarTheory.scene.getScene("localMapMenu").selected;
+        
         // this.infoBox.render();
 
     }
     
     create () {
         super.create();
-        
+        for (const [key, value] of Object.entries(this.entity.getSelectionOptions())) {
+            this.keyboardConfig[key] = value;
+        }
     }
 
     update () {
-        super.update();
+        super.update();        
         // When opened, must have called setEntity() in localMapMenu. Called again whenever they cycle through menus
-    }
-
-    sailTo(location) {
-        // StarTheory.gameManager.player.sailTo(location);
-        StarTheory.scene.getScene("currentEntityMenu").update(location)
-        // StarTheory.scene.stop("selectedEntityMenu");
-        // StarTheory.scene.start("localMapMenu");
-        
     }
 }

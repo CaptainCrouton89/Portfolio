@@ -2,9 +2,8 @@
 
 class OptionBox {
 
-    constructor(scene, entity, present) {
-        this.entity = entity;
-        this.present = present;
+    constructor(scene, options) {
+        this.options = options;
         this.scene = scene;
         this.optionContainer = this.scene.add.container(0, 0);
         // this.options = entity.getOptions();
@@ -12,7 +11,7 @@ class OptionBox {
     }
 
     render() {
-        this.sprite = new PlanetButton(scene, 0, 0, 'starGate1', this.clicked, this);
+        this.sprite = new Button(scene, 0, 0, 'starGate1', this.clicked, this);
     }
 
     getContainer () {

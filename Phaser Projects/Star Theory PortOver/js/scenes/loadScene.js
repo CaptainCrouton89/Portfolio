@@ -90,7 +90,7 @@ class LoadScene extends BaseScene {
             assetText.setText('Loading asset: ' + file.key);
         });
 
-        for (var i = 0; i < 2000; i++) {
+        for (var i = 0; i < 500; i++) {
             this.load.image('sun1'+i, 'assets/graphics/spritesheets/suns/sun1.png');
         }
  

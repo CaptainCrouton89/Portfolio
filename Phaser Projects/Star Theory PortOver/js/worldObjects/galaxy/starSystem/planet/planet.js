@@ -42,8 +42,22 @@ class Planet {
             settlementType: null,
         }
 
-        
+        this.selectedOptions = {
+            "v": [this.visit, this]
+        }
 
+        this.visitedOptions = {
+            "t": [this.trade, this],
+            "q": [this.quest, this]
+        }
+    }
+
+    getSelectionOptions () {
+        return this.selectedOptions;
+    }
+
+    getVisitOptions () {
+        return this.visitedOptions;
     }
 
     setStats(config) {
@@ -71,6 +85,19 @@ class Planet {
         console.log(this.name);
         // execute code to updated the "selected item" info to info from this item;
         // Scene.LocalMapScene.showPlanetInfo(this);
+    }
+
+    visit (planet) {
+        StarTheory.gameManager.player.setLocation(planet);
+        console.log("Player entering", StarTheory.gameManager.player.getLocation().name);
+    }
+
+    trade (planet) {
+
+    }
+
+    quest (planet) {
+
     }
 
 }

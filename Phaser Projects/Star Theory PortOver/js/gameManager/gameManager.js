@@ -62,11 +62,8 @@ class GameManager {
         // this.scene = new StartMenu();
 
         // Delete later
-        this.player.starSystemLocation = this.galaxy.starSystemManager.starSystems[0][0];
-        console.log("Player current star system: " + this.player.starSystemLocation.name);
-
-        this.player.planetaryLocation = this.player.starSystemLocation.getPlanets()[0];
-        console.log("Player current planetary system: " + this.player.planetaryLocation.name)
+        this.player.location = this.galaxy.starSystemManager.starSystems[0][0].getPlanets()[0];
+        console.log("Player current location: " + this.player.location.name);
     }
 
     saveGame () {

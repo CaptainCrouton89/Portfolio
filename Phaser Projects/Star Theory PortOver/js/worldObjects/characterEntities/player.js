@@ -4,16 +4,11 @@ class Player extends Pilot {
     constructor(config=null, settings=null) {
         super();
         this.settings = settings;
-        this.starSystemLocation;
-        this.planetaryLocation;
-        this.location = {
-            "star": this.starSystemLocation,
-            "planet": this.planetaryLocation
-        }
+        this.location;
 
         
 
-        this.ship = new Ship(this);
+        this.ship = new PlayerShip(this);
 
         
         // Load saved player if possible, otherwise create a new ones
@@ -26,6 +21,16 @@ class Player extends Pilot {
 
     getLocation() {
         return this.location;
+    }
+
+    setLocation(location) {
+        this.location = location;
+    }
+
+    getStarSystem() {
+        if (this.location.starSystem) {
+            return this.location.starSystem;
+        }
     }
 
     newPlayer () {

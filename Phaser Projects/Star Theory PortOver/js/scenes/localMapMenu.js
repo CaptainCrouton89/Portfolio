@@ -20,20 +20,22 @@ class LocalMapMenu extends MenuScene {
     
     init () {
         super.init();
-        this.name = StarTheory.gameManager.player.starSystemLocation
-        this.starSystem = StarTheory.gameManager.player.starSystemLocation;
+        this.starSystem = StarTheory.gameManager.player.getStarSystem();
         this.planets = this.starSystem.planetManager.getPlanets();
     }
     
     preload () {
         super.preload();
+        // Automatically starts the currentEntityMenu
         StarTheory.scene.start("currentEntityMenu");
+
         // StarTheory.scene.getScene("currentEntityMenu").setEntity(this.selected); Maybe load this in create function of current entity menu?
     }
     
     create () {
         super.create();
 
+        // Starts music
         this.startMusic = this.sound.add('localMapAmbient');
         this.startMusic.play();
 
@@ -43,6 +45,7 @@ class LocalMapMenu extends MenuScene {
         // Renders solar system
         this.starSystem.render(this);
 
+        // Creates selection indicator, though hides it at start
         this.selectionIndicator = new PixelSprite(this, 0, 0, 'selectionIndicator');
         this.selectionIndicator.depth = 2;
         this.selectionIndicator.visible = false;
@@ -59,16 +62,11 @@ class LocalMapMenu extends MenuScene {
         });
 
 
-
-        if (this.selected) {
-            if (!this.selectedEntityInfoMenu) {
+        // if anything is selected, and selection menu is not open, open it.
+        if (this.selected && !this.selectedEntityInfoMenu) {
                 this.selectedEntityInfoMenu = true
                 StarTheory.scene.start("selectedEntityMenu");
-            }
-            StarTheory.scene.getScene("selectedEntityMenu").setEntity(this.selected);
-            this.selected.spinContainer.add(this.selectionIndicator); // COncerned the spin container is getting added multiple times—do they stack?
         }
-
 
     }
 
@@ -76,12 +74,17 @@ class LocalMapMenu extends MenuScene {
         
         context.selectionIndicator.visible = true;
         context.selected = context.planets[context.planetSelectionIndex];
+        //context.selected.getSpinContainer().add(this.selectionIndicator);
 
         console.log("selecting planet:", context.planets[context.planetSelectionIndex].name, "with index:", context.planetSelectionIndex);
         context.planetSelectionIndex+=1;
         if (context.planetSelectionIndex >= context.planets.length) {
             context.planetSelectionIndex = 0;
         }
+
+        StarTheory.scene.getScene("selectedEntityMenu").setEntity(context.selected);
+        context.selected.spinContainer.add(context.selectionIndicator); // Concerned the spin container is getting added multiple times—do they stack?
+
     }
 
     nextShip (context) {
