@@ -7,7 +7,7 @@ class SelectedEntityMenu extends MenuScene {
         this.entity;
         this.name = "selectedEntityMenu";
 
-        // Implement both buttons, and keybinds, separately
+        // To do: Implement both buttons and keybinds separately
     }
 
     init () {

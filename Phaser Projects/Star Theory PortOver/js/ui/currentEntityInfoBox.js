@@ -6,7 +6,8 @@ class CurrentEntityInfoBox extends InfoBox {
         this.build(this.infoContainer);
     }
 
-    update() {
-        super.update(this.entity);
+    update(entity) {
+        super.update(entity);
+        this.entity = entity
     }
 }

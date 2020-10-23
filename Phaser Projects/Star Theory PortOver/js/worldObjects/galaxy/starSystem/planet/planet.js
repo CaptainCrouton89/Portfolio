@@ -84,19 +84,26 @@ class Planet {
     clicked() {
         console.log(this.name);
         // execute code to updated the "selected item" info to info from this item;
-        // Scene.LocalMapScene.showPlanetInfo(this);
+        var localMapMenu = StarTheory.scene.getScene("localMapMenu")
+        localMapMenu.selectPlanet(this);
     }
 
     visit (planet) {
+        // Option available from selectedEntityMenu
         StarTheory.gameManager.player.setLocation(planet);
+        StarTheory.scene.getScene("currentEntityMenu").setEntity();
         console.log("Player entering", StarTheory.gameManager.player.getLocation().name);
     }
 
     trade (planet) {
+        // Option available from currentEntityMenu
+        console.log("Trading on", planet.name);
 
     }
 
     quest (planet) {
+        // Option available from currentEntityMenu
+        console.log("Getting quests on", planet.name);
 
     }
 

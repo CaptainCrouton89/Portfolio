@@ -74,6 +74,18 @@ class LocalMapMenu extends MenuScene {
         this.selectionIndicator.visible = true;
     }
 
+    selectPlanet (planet) {
+        this.initializeSelector();
+        this.selected = planet;
+        this.selected.spinContainer.add(this.selectionIndicator);
+        StarTheory.scene.getScene("selectedEntityMenu").setEntity(this.selected);
+
+        this.planetSelectionIndex = planet.layer + 1;
+        if (this.planetSelectionIndex >= this.planets.length) {
+            this.planetSelectionIndex = 0;
+        }
+    }
+
     nextPlanet (context) {
         context.initializeSelector();
 

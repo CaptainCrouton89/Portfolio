@@ -1,9 +1,8 @@
 "use strict"
 
 class MenuScene extends BaseScene {
-    constructor(config, lastScene) {
+    constructor(config) {
         super(config);
-        this.lastScene = lastScene;
         this.keyboardConfig = {
             "h": [sayHi, "buddy"],
             "b": [back]
@@ -40,7 +39,7 @@ function runKey (keyEvent) {
     let key = keyEvent.key
     // console.log(key);
     if (key in this.keyboardConfig) {
-        let command = this.keyboardConfig[keyEvent.key];
+        let command = this.keyboardConfig[key];
         command[0](...command.slice(1));
     }
 }

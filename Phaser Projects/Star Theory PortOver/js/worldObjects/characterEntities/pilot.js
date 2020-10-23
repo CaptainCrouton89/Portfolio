@@ -5,5 +5,6 @@ class Pilot {
         this.reputation;
         this.honor;
         this.factionAffinity;
+        this.inventory = new InventoryManager(this);
     }
 }

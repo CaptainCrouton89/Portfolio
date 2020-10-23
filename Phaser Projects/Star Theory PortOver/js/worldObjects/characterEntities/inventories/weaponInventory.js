@@ -1,10 +1,10 @@
 "use strict"
 
-class WeaponInventory extends Inventory {
+class WeaponsInventory extends Inventory {
 
     constructor(owner) {
         super(owner);
-        this.contents = []
+    
     }
 
     getWeaponsOfType(type) {
@@ -16,6 +16,4 @@ class WeaponInventory extends Inventory {
         });
         return weaponsList;
     }
-
-    
 }

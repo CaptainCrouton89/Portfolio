@@ -2,8 +2,8 @@
 
 class TemplateScene extends MenuScene {
 
-    constructor(config, lastScene) {
-        super(config, lastScene);
+    constructor(config) {
+        super(config);
         this.name = "sceneName";
         this.keyboardConfig["char"] = foo;
     }

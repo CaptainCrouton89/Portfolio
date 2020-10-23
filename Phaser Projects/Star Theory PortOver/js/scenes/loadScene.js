@@ -104,6 +104,7 @@ class LoadScene extends BaseScene {
         // UI
         this.load.image('startButton', 'assets/graphics/UI/startButton.png');
         this.load.image('selectionIndicator', 'assets/graphics/UI/selectionIndicator.png');
+        this.load.atlas('actionSelectionMenuBox', 'assets/graphics/UI/combat/actionSelectionMenuBox.png', 'assets/graphics/UI/combat/actionSelectionMenuBox.json');
         
         // LOGO
         this.load.image('titleText', 'assets/graphics/logo/titleText.png');
