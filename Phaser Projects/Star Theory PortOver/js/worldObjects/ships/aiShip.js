@@ -1,7 +1,7 @@
-"use strict"
+'use strict';
 
 class aiShip extends Ship {
-    
+
     constructor (shipGenerationConfig) {
         super();
         this.shipGenerationConfig = shipGenerationConfig;
@@ -14,7 +14,7 @@ class aiShip extends Ship {
             this.baseStats = {
                 space: 100,
                 speed: 1
-            }
+            };
         }
     }
 
@@ -34,4 +34,4 @@ class aiShip extends Ship {
             this.reputation = config.reputation;
         }
     }
-}
+};

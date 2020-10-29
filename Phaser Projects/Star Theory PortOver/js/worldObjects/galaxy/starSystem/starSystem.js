@@ -1,10 +1,10 @@
-"use strict"
+'use strict';
 
 class StarSystem {
-    
+
     constructor(galaxy, layer, degree) {
-        
-        this.name = "defaultStarSystemName";
+
+        this.name = 'defaultStarSystemName';
         this.galaxy = galaxy;
         this.adjacentStars = [];
         this.layer = layer;
@@ -33,7 +33,7 @@ class StarSystem {
         // adds a container in the middle of the scene
         this.spinContainer = scene.add.container(gameConfig.width/2, gameConfig.height/2);
         this.spinContainer.add(this.sprite);
-        this.planetManager.getPlanets().forEach(planet => planet.render(scene))   
+        this.planetManager.getPlanets().forEach(planet => planet.render(scene));
     }
 
     clicked () {
@@ -41,8 +41,7 @@ class StarSystem {
     }
 
     genPlanets () {
-        this.planetManager.genPlanets()
+        this.planetManager.genPlanets();
     }
 
-}
-
+};

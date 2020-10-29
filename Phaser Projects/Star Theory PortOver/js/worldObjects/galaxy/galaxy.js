@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 class Galaxy {
     constructor(config=null, settings=null) {
@@ -10,12 +10,12 @@ class Galaxy {
         if (config) {
             this.load(config);
         } else {
-            this.newGalaxy()
+            this.newGalaxy();
         }
     }
 
     newGalaxy () {
-        console.log("Creating galaxy...");
+        console.log('Creating galaxy...');
 
         // Create starSystem and populate it
         this.starSystemManager.genStarsAndPlanets();
@@ -25,11 +25,11 @@ class Galaxy {
     }
 
     load (config) {
-        console.log("Loading galaxy...");
+        console.log('Loading galaxy...');
 
-        for (starSystemConfig in config["starSystems"]) {
+        for (starSystemConfig in config['starSystems']) {
             starSystem = new StarSystem(starSystemConfig);
             this.starSystemManager.add(starSystem);
         }
     }
-}
+};

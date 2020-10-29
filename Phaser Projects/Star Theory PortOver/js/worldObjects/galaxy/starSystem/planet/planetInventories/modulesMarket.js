@@ -1,8 +1,8 @@
-"use strict"
+'use strict';
 
 class ModulesMarket extends Market {
-    
+
     constructor(planet) {
         super(planet);
     }
-}
+};

@@ -23,6 +23,8 @@ class Planet {
         // Sprite Info
         this.LAYER_DEPTH = 90; // Pixel distance apart each planet is from the next
         this.sprite = null;
+        let spriteNum = Math.floor(Math.random()*14);
+        this.spriteString = "smallPlanets-" + String(spriteNum) + ".png";
         // Used to update position in localMapMenu
         this.orbitalSpeed = (1/(this.layer + 1)) * 7; 
         this.angularSpeed = (Math.random() * 2 - 1) * 30 - this.orbitalSpeed;
@@ -71,7 +73,7 @@ class Planet {
         let modifier = (this.layer+1)*this.LAYER_DEPTH;
         vec.scale(modifier, modifier);
         // Set sprite
-        this.sprite = new PlanetButton(scene, 0, 0, 'planet1', this.clicked, this);
+        this.sprite = new PlanetButton(scene, 0, 0, 'smallPlanets', this.clicked, this, this.spriteString);
 
         // Create new container, add a sprite, then add it to the starsystem
         this.orbitContainer = scene.add.container(0, 0); // This container causes the entire planet to orbit the sun

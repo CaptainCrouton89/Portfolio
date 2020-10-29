@@ -1,11 +1,11 @@
-"use strict"
+'use strict';
 
 class Inventory {
-    
-    constructor(owner) {
-        this.owner = owner;
+
+    constructor(inventoryManager) {
+        this.inventoryManager = inventoryManager;
+
     }
 
 
-}
-
+};

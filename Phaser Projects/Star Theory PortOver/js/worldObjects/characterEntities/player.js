@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 class Player extends Pilot {
     constructor(config=null, settings=null) {
@@ -6,11 +6,10 @@ class Player extends Pilot {
         this.settings = settings;
         this.location;
 
-        
+
 
         this.ship = new PlayerShip(this);
 
-        
         // Load saved player if possible, otherwise create a new ones
         if (config) {
             this.load(config);
@@ -34,16 +33,16 @@ class Player extends Pilot {
     }
 
     newPlayer () {
-        console.log("Creating player...");
-        this.reputation = 0
+        console.log('Creating player...');
+        this.reputation = 0;
         this.honor = {
             good: 0,
             bad: 0
-        }
-        this.factionAffinity = {}
+        };
+        this.factionAffinity = {};
     }
 
     load (config) {
-        console.log("Loading player...");
+        console.log('Loading player...');
     }
-}
+};

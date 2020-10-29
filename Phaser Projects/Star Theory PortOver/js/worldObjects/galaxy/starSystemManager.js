@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 class StarSystemManager {
     constructor(galaxy) {
@@ -16,7 +16,7 @@ class StarSystemManager {
     }
 
     genStarsAndPlanets () {
-        console.log("Generating stars and planets...");
+        console.log('Generating stars and planets...');
 
         // Loops through empty data structure and fills it with stars, and the for each star, generates planets
         for (let l=0; l<this.starSystems.length; l++) {
@@ -28,4 +28,4 @@ class StarSystemManager {
         }
         // console.table(this.starSystems);
     }
-}
+};

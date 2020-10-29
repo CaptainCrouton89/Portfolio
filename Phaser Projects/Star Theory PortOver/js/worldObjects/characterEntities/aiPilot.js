@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 class AiPilot extends Pilot {
 
@@ -19,4 +19,4 @@ class AiPilot extends Pilot {
             this.reputation = config.reputation;
         }
     }
-}
+};

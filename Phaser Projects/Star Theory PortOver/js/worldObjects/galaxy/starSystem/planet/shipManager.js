@@ -1,9 +1,9 @@
-"use strict"
+'use strict';
 
 class ShipManager {
     constructor() {
-        
+
     }
 
-    
-}
+
+};

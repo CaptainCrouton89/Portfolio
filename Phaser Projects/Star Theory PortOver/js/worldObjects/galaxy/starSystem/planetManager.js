@@ -1,11 +1,11 @@
-"use strict"
+'use strict';
 
 class PlanetManager {
     constructor(starSystem) {
         this.planetSystem = [];
         this.starSystem = starSystem;
-        
-        
+
+
     }
 
     init () {
@@ -29,4 +29,4 @@ class PlanetManager {
         }
         // console.table(this.starSystems);
     }
-}
+};
