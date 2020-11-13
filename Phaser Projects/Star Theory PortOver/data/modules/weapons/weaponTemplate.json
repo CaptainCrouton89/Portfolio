@@ -1,0 +1,12 @@
+{
+    "name": "name",
+    "description": "the description of the weapon, to be displayed (string)",
+    "mounting": "turret",
+    "damageType": "demolition",
+    "damage": 1000,
+    "range": 4,
+    "timeInvestment": 4000,
+    "coolDown": 8000,
+    "delay": 3000,
+    "skills": "demolition"
+}

@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 class GameManager {
     constructor(saveConfig, settingsConfig) {
@@ -12,7 +12,7 @@ class GameManager {
         if (saveConfig) {
             this.load(saveConfig);
         } else {
-            this.newGame()
+            this.newGame();
         }
     }
 
@@ -21,7 +21,7 @@ class GameManager {
         StarTheory.scene.stop(currentSceneString);
 
         // want to set new scene.last scene equal to last scene
-        
+
         StarTheory.scene.start(nextSceneString);
     }
 
@@ -54,8 +54,8 @@ class GameManager {
 
     newGame () {
         // Creates a new game
-        console.log("Creating new game...");
-        // Getting error below. "settings is not defined" 
+        console.log('Creating new game...');
+        // Getting error below. "settings is not defined"
         this.galaxy = new Galaxy(null, this.gameSettings.galaxy);
         this.player = new Player(null, this.gameSettings.player);
         this.story = new Story(null, this.gameSettings.story);
@@ -63,19 +63,19 @@ class GameManager {
 
         // Delete later
         this.player.location = this.galaxy.starSystemManager.starSystems[0][0].getPlanets()[0];
-        console.log("Player current location: " + this.player.location.name);
+        console.log('Player current location: ' + this.player.location.name);
     }
 
     saveGame () {
         // Saves game to save.json
-        console.log("Saving game...");
+        console.log('Saving game...');
     }
 
     load(saveConfig) {
-        console.log("Loading game...");
-        this.galaxy = new Galaxy(saveConfig["galaxy"]);
-        this.player = new Player(saveConfig["player"]);
-        this.story = new Story(saveConfig["story"]);
+        console.log('Loading game...');
+        this.galaxy = new Galaxy(saveConfig['galaxy']);
+        this.player = new Player(saveConfig['player']);
+        this.story = new Story(saveConfig['story']);
         // this.setScene(loadConfig["scene"]);
     }
-}
+};

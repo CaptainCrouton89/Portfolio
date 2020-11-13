@@ -1,0 +1,13 @@
+{
+    "type": "module",
+    "name": "Whistler",
+    "description": "The whistler was named after the eerie whistling sound emitted when the first of these cannons was tested. However, when fired in conjunction with an entire broadside array, the shrieking noise is earsplitting. Pirates will frequently use a whistler to fire a warning shot to alert merchants of their presence.",
+    "mounting": "broadside",
+    "damageType": "kinetic",
+    "damage": 750,
+    "reach": 3,
+    "time_investment": 4000,
+    "cooldown": 8000,
+    "delay": 3000,
+    "skills": "kinetic"
+}

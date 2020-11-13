@@ -2,19 +2,23 @@
 
 class CombatScene extends MenuScene {
 
-    constructor() {
+    constructor(config) {
+        super(config);
         this.name = "combatScene";
-        this.keyboardConfig["Enter"] = [endRound, this]
+        this.keyboardConfig["h"] = [function sayHi() {console.log("hi")}]
 
         this.animations; // Manager for all the actions, so that everything gets animated and you see the combat play out, in order
 
         this.enemies = [];
         this.allies = [];
 
+        this.actionSelectionMenu; // Whichever action selection menu is currently open
     }
 
     init () {
         super.init();
+        StarTheory.scene.start("actionSelectionMenu");
+        this.actionSelectionMenu = StarTheory.scene.getScene("actionSelectionMenu");
     }
 
     preload () {
@@ -23,6 +27,7 @@ class CombatScene extends MenuScene {
     
     create () {
         super.create();
+        this.background = new Background(this, 'stars');
     }
 
     update (time, delta) {

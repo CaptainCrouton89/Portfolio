@@ -1,0 +1,11 @@
+{
+    "type": "ship",
+    "name": "Stingray",
+    "description": "",
+    "space": 20,
+    "health": 1000,
+    "hull_armor": 500,
+    "energy_shields": 500,
+    "acceleration": 5,
+    "warpdrive": 0
+}

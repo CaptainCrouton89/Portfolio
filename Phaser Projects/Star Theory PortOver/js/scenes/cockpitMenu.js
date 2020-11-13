@@ -5,6 +5,8 @@ class CockpitMenu extends MenuScene {
     constructor(config, lastScene) {
         super(config, lastScene);
         this.keyboardConfig["Enter"] = [openLocalMap];
+        this.keyboardConfig["f"] = [enterCombat];
+        
         this.name = "CockpitMenuScene";
     }
 
@@ -33,4 +35,9 @@ class CockpitMenu extends MenuScene {
 function openLocalMap () {
     StarTheory.scene.stop("cockpitMenu");
     StarTheory.scene.start("localMapMenu");
+}
+
+function enterCombat () {
+    StarTheory.scene.stop("cockpitMenu");
+    StarTheory.scene.start("combatScene");
 }

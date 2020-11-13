@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://_core/scenes/combat/combat.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/_common/ui/menuBox.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/_common/background/starscapes/spaceBackground.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/actors/ships/baseShip.png" type="Texture" id=4]
+
+[node name="combat" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="modulesSelectionMenu" type="NinePatchRect" parent="GUI"]
+anchor_left = -0.00031177
+anchor_top = 0.00124738
+anchor_right = -0.00031177
+anchor_bottom = 0.00124746
+margin_left = 1.27699
+margin_top = 0.999969
+margin_right = 121.277
+margin_bottom = 601.0
+rect_pivot_offset = Vector2( 164.28, 544.253 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/modulesSelectionMenu"]
+anchor_top = 0.000177358
+anchor_bottom = 0.000177358
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 113.0
+margin_bottom = 137.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/modulesSelectionMenu/MarginContainer"]
+margin_right = 106.0
+margin_bottom = 130.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="q" type="Button" parent="GUI/modulesSelectionMenu/MarginContainer/VBoxContainer"]
+margin_right = 106.0
+margin_bottom = 20.0
+
+[node name="w" type="Button" parent="GUI/modulesSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 106.0
+margin_bottom = 42.0
+
+[node name="e" type="Button" parent="GUI/modulesSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 106.0
+margin_bottom = 64.0
+
+[node name="a" type="Button" parent="GUI/modulesSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 106.0
+margin_bottom = 86.0
+
+[node name="crewSelectionMenu" type="NinePatchRect" parent="GUI"]
+anchor_left = -0.00031177
+anchor_top = 0.000354716
+anchor_right = -0.00031177
+anchor_bottom = 0.000354716
+margin_left = 899.934
+margin_top = 6.40381
+margin_right = 1019.93
+margin_bottom = 606.404
+rect_pivot_offset = Vector2( 164.28, 544.253 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/crewSelectionMenu"]
+anchor_top = 0.000177358
+anchor_bottom = 0.000177358
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 113.0
+margin_bottom = 137.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/crewSelectionMenu/MarginContainer"]
+margin_right = 106.0
+margin_bottom = 130.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="GUI/crewSelectionMenu/MarginContainer/VBoxContainer"]
+margin_right = 106.0
+margin_bottom = 20.0
+
+[node name="Button2" type="Button" parent="GUI/crewSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 106.0
+margin_bottom = 42.0
+
+[node name="Button4" type="Button" parent="GUI/crewSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 106.0
+margin_bottom = 64.0
+
+[node name="Button3" type="Button" parent="GUI/crewSelectionMenu/MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 106.0
+margin_bottom = 86.0
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchor_top = 0.000452372
+anchor_bottom = 0.000452372
+margin_left = -2.47461
+margin_top = -9.40853
+margin_right = 1049.52
+margin_bottom = 607.591
+texture = ExtResource( 3 )
+stretch_mode = 7
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="baseShip" type="Sprite" parent="."]
+position = Vector2( 234.234, 264.423 )
+rotation = 1.57079
+scale = Vector2( 0.343003, 0.343003 )
+texture = ExtResource( 4 )

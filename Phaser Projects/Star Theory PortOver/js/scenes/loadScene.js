@@ -90,45 +90,101 @@ class LoadScene extends BaseScene {
             assetText.setText('Loading asset: ' + file.key);
         });
 
-        for (var i = 0; i < 500; i++) {
-            this.load.image('sun1'+i, 'assets/graphics/spritesheets/suns/sun1.png');
-        }
+
+        // DATA
+        let dataPath = "data/";
+
+        this.load.json('tambourine', dataPath + 'modules/weapons/tambourine.json');
+        this.load.json('whistler', dataPath + 'modules/weapons/whistler.json');
+        this.load.json('johnston_j-beam', dataPath + 'modules/weapons/johnston_j-beam.json');
  
 
-        // Load all images for game
-
         // AUDIO
-        this.load.audio('startMusic', 'assets/audio/revelatory01.mp3');
-        this.load.audio('localMapAmbient', 'assets/audio/unobtrusive01.mp3');
+        let auidoPath = 'assets/audio/';
 
-        // UI
-        this.load.image('startButton', 'assets/graphics/UI/startButton.png');
-        this.load.image('selectionIndicator', 'assets/graphics/UI/selectionIndicator.png');
-        this.load.atlas('actionSelectionMenuBox', 'assets/graphics/UI/combat/actionSelectionMenuBox.png', 'assets/graphics/UI/combat/actionSelectionMenuBox.json');
-        
-        // LOGO
-        this.load.image('titleText', 'assets/graphics/logo/titleText.png');
-
-        // BACKGROUNDS
-        this.load.image('spaceBackground', 'assets/graphics/background/Galaxy.png');
-        this.load.image('starrySky2', 'assets/graphics/background/starrySkies.png');
-        this.load.image('cockpit', 'assets/graphics/background/cockpit.png');
-        this.load.image('localSpaceBackground', 'assets/graphics/background/spaceBackground3.png');
-        
-        // GAME OBJECTS
-        this.load.image('sun1', 'assets/graphics/spritesheets/suns/sun1.png')
-        this.load.image('planet1', 'assets/graphics/spritesheets/planets/magentaPlanet.png')
-        this.load.image('starGate1', 'assets/graphics/spritesheets/starGates/starGate01.png')
-
-        
-        
+        this.load.audio('startMusic', auidoPath + 'revelatory01.mp3');
+        this.load.audio('localMapAmbient', auidoPath + 'unobtrusive01.mp3');
 
 
-        
+        // GRAPHICS
+        let graphicsPath = 'assets/graphics/';
+
+        // graphics/_common/
+        let commonPath = graphicsPath + '_common/';
+
+        // graphics/_common/background/
+        let backgroundPath = commonPath + 'background/';
+
+        // graphics/_common/background/starscapes
+        let starscapesPath = backgroundPath + 'starscapes/'
+        this.load.image('spaceBackground', starscapesPath + 'Galaxy.png');
+        this.load.image('stars', starscapesPath + 'spaceBackground4.png');
+        this.load.image('starrySky2', starscapesPath + 'starrySkies.png');
+        this.load.image('localSpaceBackground', starscapesPath + 'spaceBackground3.png');
+
+        // graphics/_common/ui/
+        let uiPath = commonPath + 'ui/';
+
+        // graphics/actors/
+        let actorPath = graphicsPath + 'actors/';
+
+        // graphics/actors/planets/
+        let planetPath = actorPath + 'planets/';
+        // this.load.atlas('largePlanets', planetPath + 'largePlanets/largePlanetsAtlas.png', planetPath + 'largePlanets/largePlanetsAtlas.json');
+        // this.load.atlas('mediumPlanets', planetPath + 'mediumPlanets/mediumPlanetsAtlas.png', planetPath + 'mediumPlanets/mediumPlanetsAtlas.json');
+        this.load.atlas('smallPlanets', planetPath + 'smallPlanets/smallPlanetsAtlas.png', planetPath + 'smallPlanets/smallPlanetsAtlas.json');
+
+        // graphics/actors/satellites/
+        let satellitePath = actorPath + 'satellites/';
+
+        // graphics/actors/crewMembers/
+        let crewMembersPath = actorPath + 'crewMembers/';
+
+        // graphics/actors/ships/
+        let shipsPath = actorPath + 'ships/';
+
+        // graphics/actors/starGates/
+        let starGatesPath = actorPath + 'starGates/';
+
+        // graphics/actors/suns/
+        let sunsPath = actorPath + 'suns/';
+
+        this.load.image('sun1', sunsPath + '/sun1.png')
+
+        // graphics/actors/weapons/
+        let weaponsPath = actorPath + 'weapons/';
+
+        // graphics/scenes/
+        let scenePath = graphicsPath + 'scenes/';
+
+        // graphics/scenes/localSpace/
+        let localSpacePath = scenePath + 'localSpace/';
+        this.load.image('selectionIndicator', localSpacePath +'selectionIndicator.png'); 
+
+        // graphics/scenes/cockpit/
+        let cockpitPath = scenePath + 'cockpit/';
+        this.load.image('cockpit', cockpitPath + 'cockpit.png'); 
+
+        // graphics/scenes/start/
+        let startPath = scenePath + 'start/';
+
+        this.load.image('startButton', startPath + 'startButton.png');
+
+        // graphics/logo/
+        let logoPath = graphicsPath + 'logo/';
+        this.load.image('titleText', logoPath + "titleText.png"); 
+
+        for (var i = 0; i < 500; i++) {
+            this.load.image('sun1'+i, sunsPath + '/sun1.png');
+        }        
     }
     
     create () {
         super.create();
+
+        // LOAD SAVE/NEW GAME
+        StarTheory.loadGame();
+
         StarTheory.scene.stop("loadScene");
         StarTheory.scene.start("startMenu");
         

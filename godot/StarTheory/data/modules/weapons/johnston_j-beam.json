@@ -1,0 +1,13 @@
+{
+    "type": "module",
+    "name": "Johnston J-Beam",
+    "description": "The Johnston j-beam is small, but packs a punch. It was originally intended for vaporizing protestors from the balcony of Queen Alexandria's bedroom, but when she complained about the carriage sized craters it left in the courtyard, the J-Beam found it's home mounted on the bows of astonautic ships.",
+    "mounting": "turret",
+    "damage_type": "energy",
+    "damage": 1,
+    "reach": 5,
+    "time_investment": 4,
+    "cooldown": 8,
+    "delay": 3,
+    "skills": "energy"
+}

@@ -13,7 +13,7 @@ class BootScene extends BaseScene {
 
     preload () {
         super.preload();
-        this.load.image('bootImage', 'assets/graphics/background/Galaxy.png');
+        this.load.image('bootImage', 'assets/graphics/_common/background/starscapes/Galaxy.png');
     }
     
     create () {

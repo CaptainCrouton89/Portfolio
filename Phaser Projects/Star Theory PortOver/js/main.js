@@ -1,51 +1,61 @@
-"use strict";
+'use strict';
 
 // Set first menu as the startMenu scene
 
-// Automatic, permanent game configuration settings 
+// Automatic, permanent game configuration settings
 var gameConfig = {
     type: Phaser.AUTO,
     zoom: 1.39,
     width: 1280,
     height: 720,
     pixelArt: true,
-    scene: [new BootScene("bootScene"), new LoadScene("loadScene"), new StartMenu("startMenu"), new CockpitMenu("cockpitMenu"), new LocalMapMenu("localMapMenu"), new SelectedEntityMenu("selectedEntityMenu"), new CurrentEntityMenu("currentEntityMenu")]
-}
+    scene: [
+        new BootScene('bootScene'),
+        new LoadScene('loadScene'),
+        new StartMenu('startMenu'),
+        new CockpitMenu('cockpitMenu'),
+        new LocalMapMenu('localMapMenu'),
+        new SelectedEntityMenu('selectedEntityMenu'),
+        new CurrentEntityMenu('currentEntityMenu'),
+        new CombatScene('combatScene'),
+        new ActionSelectionMenu('actionSelectionMenu')
+    ]
+};
 
 // Move this to a json eventually
 var settingsConfig = {
     galaxy: {
-        starLayers: {label: "Layers of stars", range: {min: 1, current: 5, max: 8}},
-        averageNumPlanets: {label: "Average number of planets per star", range: {min: 0, current: 4, max: 9}},
-        averageNumMoons: {label: "Average number of moons per planet", range: {min: 0, current: .3, max: 1}},
+        starLayers: {label: 'Layers of stars', range: {min: 1, current: 5, max: 8}},
+        averageNumPlanets: {label: 'Average number of planets per star', range: {min: 0, current: 4, max: 9}},
+        averageNumMoons: {label: 'Average number of moons per planet', range: {min: 0, current: .3, max: 1}},
     },
     player: {
-        startingCash: {label: "Starting cash", range: {min: 0, current: 1000, max: 100000}},
-        startingModules: {label: "Starting modules", list: []},
-        startingReputation: {label: "Starting reputation", range: {min: 0, current: 0, max: 1000}},
-        startingHonor: {label: "Starting honor", range: {min: 0, current: .5, max: 1}},
+        startingCash: {label: 'Starting cash', range: {min: 0, current: 1000, max: 100000}},
+        startingModules: {label: 'Starting modules', list: []},
+        startingReputation: {label: 'Starting reputation', range: {min: 0, current: 0, max: 1000}},
+        startingHonor: {label: 'Starting honor', range: {min: 0, current: .5, max: 1}},
     },
     story: {
-        skipStory: {label: "Skip story", checkbox: false}
+        skipStory: {label: 'Skip story', checkbox: false}
     },
     general: {
         // factionExpansionRate: {min: 0, current: .5, max: 1}
     },
     controls: controlsConfig
-}
+};
 
 var controlsConfig = {
-    "h": help,
-    "-": zoomOut,
-    "=": zoomIn
-}
+    'h': help,
+    '-': zoomOut,
+    '=': zoomIn
+};
 
 // Create a globally accessible phaser Game object. This will let us access the game manager, player, and galaxy
 var StarTheory = new Phaser.Game(gameConfig);
 
 
 
-function start() {
+StarTheory.loadGame = function() {
     // Try to load a save if it is present
     let saveConfig;
     try {
@@ -55,17 +65,11 @@ function start() {
     }
 
     StarTheory.gameManager = new GameManager(saveConfig, settingsConfig);
-}
+};
 
-function getGameManager() {
+ StarTheory.getGameManager = function() {
     return StarTheory.gameManager;
 }
-
-function getGame() {
-    return StarTheory;
-}
-
-start()
 
 function help() {
 

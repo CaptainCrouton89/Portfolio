@@ -1,8 +1,8 @@
 "use strict"
 
 class Clickable extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, actionOnClick) {
-        super(scene, x, y, texture, actionOnClick);
+    constructor(scene, x, y, texture, frame) {
+        super(scene, x, y, texture, frame);
         scene.add.existing(this);
 
         this.setInteractive();
@@ -12,8 +12,8 @@ class Clickable extends Phaser.GameObjects.Sprite {
 
 class Button extends Clickable {
 
-    constructor(scene, x, y, texture, actionOnClick, context) {
-        super(scene, x, y, texture, actionOnClick);
+    constructor(scene, x, y, texture, actionOnClick, context, frame) {
+        super(scene, x, y, texture, frame);
         this.on('pointerdown', this.pointerDown, this);
         this.on('pointerdown', actionOnClick, context);
         this.on('pointerout', this.hoverOff, this);
@@ -56,7 +56,7 @@ class Button extends Clickable {
 
 class PlanetButton extends Button {
 
-    constructor(scene, x, y, texture, actionOnClick, context) {
-        super(scene, x, y, texture, actionOnClick, context);
+    constructor(scene, x, y, texture, actionOnClick, context, frame) {
+        super(scene, x, y, texture, actionOnClick, context, frame);
     }
 }
